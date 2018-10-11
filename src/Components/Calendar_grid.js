@@ -12,11 +12,16 @@ const styles = theme => ({
   paper: {
     height: 200,
     width: 140,
-    textAlign: 'left',
+    textAlign: 'center',
   },
   control: {
     padding: theme.spacing.unit * 2,
   },
+  titleBar: {
+    background:
+    'linear-gradient(to bottom, rgba(142,252,32,1) 0%, ' +
+    'rgba(142,252,32,.6) 70%, rgba(0,0,0,0) 100%)',
+  }
 });
 
 class GuttersGrid extends React.Component {
@@ -34,7 +39,7 @@ class GuttersGrid extends React.Component {
             {['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'].map(value => (
               <Grid key={value} item>
                 <Paper className={classes.paper}>
-                    <Typography variant="h6">
+                    <Typography variant="h6" className={classes.titleBar}>
                         {value}
                     </Typography>
                 </Paper>
