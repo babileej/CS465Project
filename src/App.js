@@ -1,26 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import ButtonAppBar from './Components/Navbar';
+import CalendarGrid from './Components/Calendar_grid';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { purple, lime } from '@material-ui/core/colors';
 import './App.css';
+
+
+const theme = createMuiTheme({
+  palette: {
+    primary: purple,
+    secondary: lime, 
+  },
+});
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <MuiThemeProvider theme={theme}>
+        <div className="App">
+          <ButtonAppBar/>
+          <CalendarGrid/>
+        </div>
+      </MuiThemeProvider>
     );
   }
 }
