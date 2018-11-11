@@ -2,94 +2,55 @@
 // Fall 2018
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import DateView from './DateView';
-import Paper from '@material-ui/core/Paper';
+import ButtonAppBar from './ButtonViews';
+import * as CalendarFunctions from './Functions/CalendarFunctions';
 import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-
 
 // Stylings for this particular element (calendar grid)
 const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    width: '100%'
-  },
-  control: {
-    padding: theme.spacing.unit * 2,
+  container: {
+    display: 'flex',
+    marginLeft: '10%',
+    justifyContent: 'center',
+    width: '80%',
   },
   cell: {
     height: 350,
+    width: 200,
+  },
+  item: {
+    justifyContent: 'center',
   },
 });
 
-class GuttersGrid extends React.Component {
+class CalendarGrid extends React.Component {
   state = {
-    spacing: '14',
+    spacing: 12,
+    dates: undefined,
   };
+  handleClick(view) {
+    this.setState({dates: CalendarFunctions.changeView(view)});
+  }
+  componentDidMount(){
+    this.setState({dates: CalendarFunctions.changeView('Weekly')});
+  }
   render() {
     const { classes } = this.props;
     const { spacing } = this.state;
-    let today = new Date().getDate();
-    //let dayOfWeek = new Date().getDay();
-    let dates = [
-      {
-        'dayOfWeek' : 'S',
-        'date': today - 1,
-        'display':false
-      },
-      {
-        'dayOfWeek' : 'M',
-        'date': today,
-        'display':true
-      },
-      {
-        'dayOfWeek' : 'T',
-        'date': today + 1,
-        'display':true
-      },
-      {
-        'dayOfWeek' : 'W',
-        'date': today + 2,
-        'display':true
-      },
-      {
-        'dayOfWeek' : 'T',
-        'date': today + 3,
-        'display':true
-      },
-      {
-        'dayOfWeek' : 'F',
-        'date': today + 4,
-        'display':true
-      },
-      {
-        'dayOfWeek' : 'S',
-        'date': today + 5,
-        'display':true
-      }
-    ];
+    const { dates } = this.state;
     return (
-     // <Grid container className={classes.root} spacing={16}>
-        //<Grid item xs={12} className={classes.root}spacing={16}>
-          <Grid container className={classes.root} justify="center" spacing={Number(spacing)}>
-            {dates.map(value => (
-              <Grid key={value} item className= {classes.cell}>
-                <DateView display={value.display} date = {value} events = {[]}/>
-              </Grid>
-            ))}
-          </Grid>
-      //  </Grid>
-       // <Grid item xs={12}>
-       //   <Paper className={classes.control}></Paper>
-       // </Grid>
-      //</Grid>
+      <div>
+        <ButtonAppBar handleClick={this.handleClick.bind(this)}/>
+        <div className={classes.container} spacing={Number(spacing)}>
+          {dates && dates.map(value => (
+            <div key={value} className= {classes.cell}>
+              <DateView display={value.display} date = {value} events = {[]}/>
+            </div>
+          ))}
+        </div>
+      </div>
     );
   }
 }
-
-GuttersGrid.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(GuttersGrid);
+export default withStyles(styles)(CalendarGrid);

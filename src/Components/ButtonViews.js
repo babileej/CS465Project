@@ -7,25 +7,23 @@ const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
     marginBottom: 30,
-    marginTop: -10
   },
   input: {
     display: 'none',
   },
-  
 });
 
-function ContainedButtons(props) {
-  const { classes } = props;
+
+function ContainedButtons({classes, handleClick}) {
   return (
     <div>
-      <Button variant="contained" color="primary" className={classes.button}>
+      <Button variant="contained" color="primary" className={classes.button} onClick={() => handleClick('Today')}>
         Today
       </Button>
-      <Button variant="contained" color="primary" className={classes.button}>
+      <Button variant="contained" color="primary" className={classes.button} onClick={() => handleClick('Weekly')}>
         Weekly
       </Button>
-      <Button variant="contained" color="primary" className={classes.button}>
+      <Button variant="contained" color="primary" className={classes.button} onClick={() => handleClick('Monthly')}>
         Monthly
       </Button>
       <input

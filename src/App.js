@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import ButtonAppBar from './Components/Navbar';
 import CalendarGrid from './Components/CalendarGrid';
-import ButtonView from './Components/ButtonViews';
+import Navbar from './Components/Navbar';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import { purple, lime, grey } from '@material-ui/core/colors';
+import { indigo } from '@material-ui/core/colors';
 import './App.css';
 
 
 const theme = createMuiTheme({
   palette: {
-    primary: purple,
-    secondary: lime,
-    disabled: grey,
-  },
+    primary: indigo,
+    secondary: {
+      main: '#b2ff59',
+    },
+  }
 });
 
 class App extends Component {
@@ -20,8 +20,7 @@ class App extends Component {
     return (
       <MuiThemeProvider theme={theme}>
         <div className="App">
-          <ButtonAppBar/>
-          <ButtonView/>
+          <Navbar/>
           <CalendarGrid/>
         </div>
       </MuiThemeProvider>
