@@ -1,3 +1,7 @@
+// Bailee Johnstone, 465P Project, Calendar Grid Component
+// Fall 2018
+// Main Application
+
 import React, { Component } from 'react';
 import CalendarGrid from './Components/CalendarGrid';
 import Navbar from './Components/Navbar';
@@ -12,7 +16,7 @@ const theme = createMuiTheme({
     secondary: {
       main: '#b2ff59',
     },
-  }
+  },
 });
 
 class App extends Component {

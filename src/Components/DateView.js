@@ -1,11 +1,12 @@
 // Bailee Johnstone, 465P Project, Calendar Grid Component
 // Fall 2018
-
+// This componenet displays a single day in either the daily view, weekly view, or monthly view
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
+// Styles
 const styles = theme => ({
     paper: {
         height: '100%',
@@ -19,13 +20,14 @@ const styles = theme => ({
       },
 });
 
+// Props to be passed
 const DateView = ({
     classes,
     display,
     date,
     events
 }) => {
-    console.log(date);
+    // Display data. If date is before current day, disable events
     return (
         <Paper className={classes.paper} style={display ? {} : {background: 'lightGrey'}}>
             <div className={classes.titleBar}>
