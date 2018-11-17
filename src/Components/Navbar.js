@@ -1,3 +1,6 @@
+// Bailee Johnstone, 465P Project, Calendar Grid Component
+// Fall 2018
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';

@@ -1,6 +1,7 @@
 // Bailee Johnstone, 465P Project, Calendar Grid Component
 // Fall 2018
 
+// Returns the view that needs to render in the calendar app.
 export function changeView(typeOfView) {
     let today = new Date().getDate();
     let dayOfWeek = new Date().getDay();
@@ -101,6 +102,5 @@ export function renderMonthly(today, dayOfWeek, month) {
         }
         toRender.push(day);
     }
-    //console.log(toRender)
     return toRender;
 }

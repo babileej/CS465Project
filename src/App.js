@@ -3,7 +3,7 @@
 // Main Application
 
 import React, { Component } from 'react';
-import CalendarGrid from './Components/CalendarGrid';
+import CalendarApp from './Components/CalendarApp';
 import Navbar from './Components/Navbar';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { indigo } from '@material-ui/core/colors';
@@ -25,7 +25,7 @@ class App extends Component {
       <MuiThemeProvider theme={theme}>
         <div className="App">
           <Navbar/>
-          <CalendarGrid/>
+          <CalendarApp/>
         </div>
       </MuiThemeProvider>
     );

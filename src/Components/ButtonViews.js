@@ -19,7 +19,10 @@ const styles = theme => ({
 });
 
 
-function ContainedButtons({classes, handleClick}) {
+const ContainedButtons = ({
+  classes,
+  handleClick,
+}) => {
   return (
     <div>
       <Button variant="contained" color="primary" className={classes.button} onClick={() => handleClick('Today')}>
