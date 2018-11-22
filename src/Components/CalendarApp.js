@@ -11,6 +11,7 @@ class CalendarApp extends React.Component {
     state = {
         dates: undefined,
         open: false,
+        events: undefined,
     };        
     handleClick = view => {
         this.setState({dates: CalendarFunctions.changeView(view)});
@@ -19,7 +20,19 @@ class CalendarApp extends React.Component {
         this.setState({dates: CalendarFunctions.changeView('Weekly')});
     }
     openForm = () => {
-        this.setState({open: !this.state.open})
+        this.setState({open: true});
+    }
+    closeForm = () => {
+        this.setState({open: false});
+    }
+    handleSubmit = event => {
+        this.setState({open: false});
+        const form = event.target;
+        const data = new FormData(form);
+        // Check date, time, and name so no dupe events
+        // send to local storage
+        window.localStorage.setItem(localStorage.length+1, data);
+       
     }  
     render() {
         const { dates } = this.state;
@@ -28,7 +41,7 @@ class CalendarApp extends React.Component {
             <div className="CalendarApp">
                 <ButtonAppBar handleClick={this.handleClick}/>
                 <CalendarGrid dates={dates}/>
-                <Form openForm={this.openForm} open={open}/>
+                <Form openForm={this.openForm} open={open} closeForm={this.closeForm} handleSubmit={this.handleSubmit}/>
             </div>
         );
     }

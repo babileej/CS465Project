@@ -21,14 +21,14 @@ const styles = theme => ({
   navbar: theme.mixins.toolbar,
 });
 
-function ButtonAppBar(props) {
+const ButtonAppBar = props => {
     const { classes } = props;
     return (
     <div className={classes.root}>
         <AppBar position="fixed">
             <Toolbar>
                 <Dropdown/>   
-                <Typography variant="h6" color="inherit" className={classes.grow}>
+                <Typography variant="h5" color="inherit" className={classes.grow}>
                     Calendar
                 </Typography>
                 <Button color="inherit">Login</Button>
