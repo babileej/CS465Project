@@ -104,3 +104,31 @@ export function renderMonthly(today, dayOfWeek, month) {
     }
     return toRender;
 }
+
+export function getEvents(dates) {
+    let events = [];
+    let startDate = 0;
+    let endDate = 0;
+    if(dates) {
+        startDate = dates[0].date;
+        endDate = dates[-1].date;
+    }
+    else
+        return undefined;
+    let local = Object.keys(localStorage)
+    local.forEach(element => {
+        let item = localStorage.getItem(JSON.parse(element));
+        // Parse date/time in element
+        console.log(item);
+        let itemDate = new Date(item.date);
+        if(itemDate >= startDate && itemDate <= endDate)
+            events.append(item);
+    });
+    // Sort by date and time
+    events.sort((a,b) => {
+        let dateA = new Date(a.date);
+        let dateB = new Date(b.date);
+        return dateA - dateB;
+    });
+    return events;
+}

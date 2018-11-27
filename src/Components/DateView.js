@@ -37,6 +37,16 @@ const DateView = ({
                 <Typography variant='h6' style={{textAlign: 'right', paddingRight: 8, flexGrow: 2}}>
                     {date.date}
                 </Typography>
+                {
+                    events && events.map(value => {
+                        return(
+                            <Typography variant="body1" style={{textAlign: 'center'}}>
+                                {value.name}
+                                {value.time}     
+                            </Typography>
+                        );    
+                    })
+                }
             </div>
         </Paper>
     );

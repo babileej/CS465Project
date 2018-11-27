@@ -72,7 +72,7 @@ class Form extends React.Component {
                                     id="datetime-local"
                                     label="Event Date and Time"
                                     type="datetime-local"
-                                    defaultValue="2017-05-24T10:30"
+                                    defaultValue="2017-05-25T10:30"
                                     required
                                     className={classes.formControl}
                                     InputLabelProps={{
@@ -97,7 +97,7 @@ class Form extends React.Component {
                                 />
                             </form>
                             <DialogActions>
-                                <Button className={classes.submitButton} onClick={() => handleSubmit(this.state.event)}>
+                                <Button className={classes.submitButton} onClick={event => handleSubmit(this.state.event)}>
                                     Submit
                                 </Button>
                                 <Button className={classes.submitButton} onClick={closeForm}>
