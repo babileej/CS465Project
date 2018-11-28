@@ -97,7 +97,7 @@ class Form extends React.Component {
                                 />
                             </form>
                             <DialogActions>
-                                <Button className={classes.submitButton} onClick={event => handleSubmit(this.state.event)}>
+                                <Button className={classes.submitButton} onClick={() => handleSubmit(this.state.event)}>
                                     Submit
                                 </Button>
                                 <Button className={classes.submitButton} onClick={closeForm}>

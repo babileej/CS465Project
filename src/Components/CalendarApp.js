@@ -14,12 +14,18 @@ class CalendarApp extends React.Component {
         events: undefined,
     };        
     handleClick = view => {
-        this.setState({dates: CalendarFunctions.changeView(view)});
-        this.setState({events: CalendarFunctions.getEvents(this.dates)});
+        let tempDates = [];
+        let tempEvents = [];
+        tempDates = CalendarFunctions.changeView(view);
+        tempEvents = CalendarFunctions.getEvents(tempDates);
+        this.setState({dates: tempDates, events: tempEvents});
     }
     componentDidMount = () => {
-        this.setState({dates: CalendarFunctions.changeView('Weekly')});
-        this.setState({events: CalendarFunctions.getEvents(this.dates)});
+        let tempDates = [];
+        let tempEvents = [];
+        tempDates = CalendarFunctions.changeView("Weekly");
+        tempEvents = CalendarFunctions.getEvents(tempDates);
+        this.setState({dates: tempDates, events: tempEvents});
     }
     openForm = () => {
         this.setState({open: true});
@@ -33,7 +39,7 @@ class CalendarApp extends React.Component {
         
         // Send event to local storage
         window.localStorage.setItem(localStorage.length+1, JSON.stringify(event));
-        this.setState({events: CalendarFunctions.getEvents(this.dates)});
+        this.setState({events: CalendarFunctions.getEvents(this.state.dates)});
     }  
     render() {
         const { dates } = this.state;

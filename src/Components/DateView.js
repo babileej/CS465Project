@@ -5,13 +5,15 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import EventList from './EventList';
 
 // Styles
 const styles = theme => ({
     paper: {
         height: '100%',
         width: '100%',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
+       // overflow: 'auto',
       },
       titleBar: {
         background: theme.palette.secondary.main,
@@ -37,17 +39,8 @@ const DateView = ({
                 <Typography variant='h6' style={{textAlign: 'right', paddingRight: 8, flexGrow: 2}}>
                     {date.date}
                 </Typography>
-                {
-                    events && events.map(value => {
-                        return(
-                            <Typography variant="body1" style={{textAlign: 'center'}}>
-                                {value.name}
-                                {value.time}     
-                            </Typography>
-                        );    
-                    })
-                }
             </div>
+            <EventList events={events}/> 
         </Paper>
     );
 }
