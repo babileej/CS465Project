@@ -11,21 +11,13 @@ class CalendarApp extends React.Component {
     state = {
         dates: undefined,
         open: false,
-        events: undefined,
+        view: 'Weekly',
     };        
-    handleClick = view => {
-        let tempDates = [];
-        let tempEvents = [];
-        tempDates = CalendarFunctions.changeView(view);
-        tempEvents = CalendarFunctions.getEvents(tempDates);
-        this.setState({dates: tempDates, events: tempEvents});
+    handleClick = newView => {
+        this.setState({view: newView, dates: CalendarFunctions.changeView(newView)});
     }
     componentDidMount = () => {
-        let tempDates = [];
-        let tempEvents = [];
-        tempDates = CalendarFunctions.changeView("Weekly");
-        tempEvents = CalendarFunctions.getEvents(tempDates);
-        this.setState({dates: tempDates, events: tempEvents});
+        this.setState({dates: CalendarFunctions.changeView(this.state.view)});
     }
     openForm = () => {
         this.setState({open: true});
@@ -36,19 +28,22 @@ class CalendarApp extends React.Component {
     handleSubmit = event => {
         this.setState({open: false});
         // TODO: Check date, time, and name so no dupe events
-        
         // Send event to local storage
-        window.localStorage.setItem(localStorage.length+1, JSON.stringify(event));
-        this.setState({events: CalendarFunctions.getEvents(this.state.dates)});
+        event.id = localStorage.length + 1;
+        window.localStorage.setItem(event.id, JSON.stringify(event));
+        this.setState({dates: CalendarFunctions.changeView(this.state.view)});
+    }
+    deleteEvent = id => {
+        window.localStorage.removeItem(id);
+        this.setState({dates: CalendarFunctions.changeView(this.state.view)});
     }  
     render() {
         const { dates } = this.state;
-        const { events } = this.state;
         const { open } = this.state;
         return (
             <div className="CalendarApp">
                 <ButtonAppBar handleClick={this.handleClick}/>
-                <CalendarGrid dates={dates} events={events}/>
+                <CalendarGrid dates={dates} deleteEvent={this.deleteEvent}/>
                 <Form openForm={this.openForm} open={open} closeForm={this.closeForm} handleSubmit={this.handleSubmit}/>
             </div>
         );

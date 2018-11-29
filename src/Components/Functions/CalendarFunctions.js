@@ -29,13 +29,16 @@ export function renderWeekly(today, dayOfWeek) {
             dateOfWeek: daysOfWeek[i - (today-dayOfWeek)],
             date: i,
             display: false,
-            fullDate: new Date(2018, month, i)   
+            displayNum: false,
+            fullDate: new Date(2018, month, i),
+            events: [],   
         };
         if(day.date >= today) {
             day.display = true;
         }
         toRender.push(day);
     }
+    getEvents(toRender);
     return toRender;
 }
 
@@ -48,8 +51,11 @@ export function renderDaily(today, dayOfWeek) {
         dateOfWeek: daysOfWeek[dayOfWeek],
         date: today,
         display: true,
-        fullDate: new Date(2018, month, today), 
+        displayNum: false,
+        fullDate: new Date(2018, month, today),
+        events: [],
     });
+    getEvents(toRender);
     return toRender;
 }
 
@@ -89,7 +95,9 @@ export function renderMonthly(today, dayOfWeek, month) {
                 dateOfWeek: daysOfWeek[(previousMonth + i) % 7],
                 date: previousMonth + i,
                 display: false,
-                fullDate: new Date(2018, month, i), 
+                displayNum: true,
+                fullDate: new Date(2018, month, i),
+                events: [], 
             };    
         }
         else {
@@ -100,7 +108,9 @@ export function renderMonthly(today, dayOfWeek, month) {
                 dateOfWeek: daysOfWeek[whatDay],
                 date: i,
                 display: false,
-                fullDate: new Date(2018, month, i), 
+                displayNum: true,
+                fullDate: new Date(2018, month, i),
+                events: [], 
             };
             if(day.date >= today) {
                 day.display = true;
@@ -108,29 +118,24 @@ export function renderMonthly(today, dayOfWeek, month) {
         }
         toRender.push(day);
     }
+    getEvents(toRender);
     return toRender;
 }
 
 export function getEvents(dates) {
-    let events = [];
-    let startDate, endDate;
-
     if(dates) {
-        startDate = dates[0].fullDate;
-        endDate = dates[dates.length - 1].fullDate;
+        let local = Object.keys(localStorage)
+        local.forEach(element => {
+            let item = JSON.parse(localStorage.getItem(element));
+            let itemDate = new Date(item.date).toDateString();
+            for(let i = 0; i < dates.length; ++i) {
+                if(itemDate === dates[i].fullDate.toDateString()) {
+                    dates[i].events.push(item);
+                    dates[i].events.sort((a,b) => {
+                        return a.fullDate - b.fullDate;
+                    });
+                }
+            }
+        });
     }
-    else
-        return undefined;
-    let local = Object.keys(localStorage)
-    local.forEach(element => {
-        let item = JSON.parse(localStorage.getItem(element));
-        let itemDate = new Date(item.date);
-        if(itemDate >= startDate && itemDate <= endDate)
-            events.push(item);
-    });
-    // Sort by date and time
-    events.sort((a,b) => {
-        return a.date - b.date;
-    });
-    return events;
 }

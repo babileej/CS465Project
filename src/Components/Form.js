@@ -39,12 +39,21 @@ class Form extends React.Component {
           event: Object.assign({}, this.state.event, {[name]:event.target.value})
         });
     };
+    clearForm = () => {
+        let tempEvent = Object.assign({}, this.state.event);
+        this.setState({event: { 
+            name: undefined,
+            date: undefined,
+            location: undefined,
+            attendees: undefined,}
+        });
+        this.props.handleSubmit(tempEvent);
+    };
     render() {
         const { classes } = this.props;
         const { open } = this.props;
         const { openForm } = this.props;
         const { closeForm } = this.props;
-        const { handleSubmit } = this.props;
         return (
             <div>
                 <Button 
@@ -97,7 +106,7 @@ class Form extends React.Component {
                                 />
                             </form>
                             <DialogActions>
-                                <Button className={classes.submitButton} onClick={() => handleSubmit(this.state.event)}>
+                                <Button className={classes.submitButton} onClick={() => this.clearForm()}>
                                     Submit
                                 </Button>
                                 <Button className={classes.submitButton} onClick={closeForm}>

@@ -12,13 +12,15 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 const styles = theme => ({
     eventList: {
-
+        
     },
 });
 
 const EventList = ({
     classes,
     events,
+    deleteEvent,
+
 }) => {
     return(
         <div className={classes.eventList}>
@@ -32,8 +34,8 @@ const EventList = ({
                                     secondary={new Date(item.date).toLocaleTimeString('en-US')}
                                 />
                                 <ListItemSecondaryAction>
-                                    <IconButton aria-label="Delete">
-                                    <DeleteIcon />
+                                    <IconButton aria-label="Delete" onClick={() => deleteEvent(item.id)}>
+                                        <DeleteIcon style={{fontSize: 14}}/>
                                     </IconButton>
                                 </ListItemSecondaryAction>
                             </ListItem>

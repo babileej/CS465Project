@@ -1,6 +1,8 @@
 // Bailee Johnstone, 465P Project, Calendar Grid Component
 // Fall 2018
-// This componenet displays a single day in either the daily view, weekly view, or monthly view
+// This componenet displays a single day in either the daily view, 
+// weekly view, or monthly view
+
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -13,12 +15,18 @@ const styles = theme => ({
         height: '100%',
         width: '100%',
         justifyContent: 'space-around',
-       // overflow: 'auto',
+        display: 'flex',
+        flexDirection: 'column',
       },
       titleBar: {
         background: theme.palette.secondary.main,
+        height: 30,
         display: 'flex',
         border: 1,
+      },
+      events : {  
+        flexGrow: 1,
+        overflow: 'auto',
       },
 });
 
@@ -27,7 +35,7 @@ const DateView = ({
     classes,
     display,
     date,
-    events
+    deleteEvent,
 }) => {
     // Display data. If date is before current day, disable events
     return (
@@ -40,7 +48,11 @@ const DateView = ({
                     {date.date}
                 </Typography>
             </div>
-            <EventList events={events}/> 
+            <div className={classes.events}>
+                {
+                    date.events && display && <EventList events={date.events} deleteEvent={deleteEvent}/>
+                }
+            </div> 
         </Paper>
     );
 }

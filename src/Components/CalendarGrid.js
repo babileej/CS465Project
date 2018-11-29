@@ -35,7 +35,7 @@ const styles = theme => ({
 const CalendarGrid = ({
   classes,
   dates,
-  events,
+  deleteEvent,
 }) => {
   let rowsToRender = dates ? Math.ceil(dates.length / 7) : 0;
   let weeks = [];
@@ -57,7 +57,7 @@ const CalendarGrid = ({
         {
           weekToMap && weekToMap.map(value => (
           <div key={value} className= {special}>
-            <DateView display={value.display} date = {value} events = {events}/>
+            <DateView display={value.display} date={value} deleteEvent={deleteEvent}/>
           </div>
         ))}
       </div>
