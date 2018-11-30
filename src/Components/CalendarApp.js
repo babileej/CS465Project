@@ -29,7 +29,11 @@ class CalendarApp extends React.Component {
         this.setState({open: false});
         // TODO: Check date, time, and name so no dupe events
         // Send event to local storage
-        event.id = localStorage.length + 1;
+        let last = localStorage.key(localStorage.length - 1);
+        if(last === null)
+            event.id = 1;
+        else
+            event.id = parseInt(last, 10) + 1;
         window.localStorage.setItem(event.id, JSON.stringify(event));
         this.setState({dates: CalendarFunctions.changeView(this.state.view)});
     }

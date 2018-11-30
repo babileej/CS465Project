@@ -81,7 +81,7 @@ class Form extends React.Component {
                                     id="datetime-local"
                                     label="Event Date and Time"
                                     type="datetime-local"
-                                    defaultValue="2017-05-25T10:30"
+                                    defaultValue="2018-11-30T10:30"
                                     required
                                     className={classes.formControl}
                                     InputLabelProps={{
