@@ -1,4 +1,4 @@
-#CS465 Full Stack Web Development Personal Project
+# CS465P Full Stack Web Development Personal Project
 
 Written By: Bailee Johnstone
 
@@ -9,25 +9,25 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 This is a basic Calendar web application with Daily, Weekly and Monthly views, event addition and deletion. 
 This project was put together using React and Material UI and was created for a CS465P Full Stack Web Development in Fall Term 2018. 
 
-#To Install:
+# To Install:
 
 1. Clone this Repository
 
-    #Github
+    / Github /
     
-    ssh: git@github.com:babileej/CS465Project.git
+    ``ssh: git@github.com:babileej/CS465Project.git``
     
-    https: https://github.com/babileej/CS465Project.git
+    ``https: https://github.com/babileej/CS465Project.git``
     
-    #Bitbucket
+    / Bitbucket /
     
-    ssh: git@bitbucket.org:baileepdx/teaching-webdev.git
+    ``ssh: git@bitbucket.org:baileepdx/teaching-webdev.git``
     
-    https: git clone https://baileepdx@bitbucket.org/baileepdx/teaching-webdev.git
+    ``https: git clone https://baileepdx@bitbucket.org/baileepdx/teaching-webdev.git``
 
-2. Run <npm install>
+2. Run ``npm install``
 
-#To Run:
+# To Run:
 
-1. In a terminal, within the project directory, run <npm start> to open the project in a localhost.
+1. In a terminal, within the project directory, run ``npm start`` to open the project in a localhost.
    The default is localhost:3000.
