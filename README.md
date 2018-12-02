@@ -12,15 +12,22 @@ This project was put together using React and Material UI and was created for a 
 #To Install:
 
 1. Clone this Repository
+
     #Github
-    [ssh: git@github.com:babileej/CS465Project.git]
-    [https: https://github.com/babileej/CS465Project.git]
+    
+    ssh: git@github.com:babileej/CS465Project.git
+    
+    https: https://github.com/babileej/CS465Project.git
+    
     #Bitbucket
-    [ssh: git@bitbucket.org:baileepdx/teaching-webdev.git]
-    [https: git clone https://baileepdx@bitbucket.org/baileepdx/teaching-webdev.git]
-2. Run [npm install]
+    
+    ssh: git@bitbucket.org:baileepdx/teaching-webdev.git
+    
+    https: git clone https://baileepdx@bitbucket.org/baileepdx/teaching-webdev.git
+
+2. Run <npm install>
 
 #To Run:
 
-1. In a terminal, within the project directory, run [npm start] to open the project in a localhost.
+1. In a terminal, within the project directory, run <npm start> to open the project in a localhost.
    The default is localhost:3000.
