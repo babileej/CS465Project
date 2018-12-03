@@ -30,8 +30,4 @@ This project was put together using React and Material UI and was created for a 
 # To Run:
 
 1. In a terminal, within the project directory, run ``npm start`` to open the project in a localhost.
-<<<<<<< HEAD
    The default is localhost:3000.
-=======
-   The default is localhost:3000.
->>>>>>> 6b6cd152d05ff099ce5773424ffe8449d9037402
