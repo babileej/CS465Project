@@ -1,6 +1,8 @@
 // Bailee Johnstone, 465P Project, Calendar Grid Component
 // Fall 2018
 
+// This is the form for adding an event to the calendar
+
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';

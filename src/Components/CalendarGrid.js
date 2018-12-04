@@ -37,6 +37,7 @@ const CalendarGrid = ({
   dates,
   deleteEvent,
 }) => {
+  // Logic to render dates
   let rowsToRender = dates ? Math.ceil(dates.length / 7) : 0;
   let weeks = [];
   let i = 0;
@@ -55,6 +56,7 @@ const CalendarGrid = ({
     weeks.push(
       <div className={classes.container}>
         {
+          // Display each week with events
           weekToMap && weekToMap.map(value => (
           <div key={value} className= {special}>
             <DateView display={value.display} date={value} deleteEvent={deleteEvent}/>
